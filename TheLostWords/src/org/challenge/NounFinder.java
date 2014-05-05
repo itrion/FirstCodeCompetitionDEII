@@ -22,4 +22,11 @@ public class NounFinder {
         return true;
     }
 
+    public NounCoordinates doAReverseVerticalSearch(String noun) {
+        return reverseNounCoordinates(doAVerticalSearch(new StringBuilder(noun).reverse().toString()));
+    }
+
+    private NounCoordinates reverseNounCoordinates(NounCoordinates nounCoordinates) {
+        return new NounCoordinates(nounCoordinates.nounEnd(), nounCoordinates.nounBegin());
+    }
 }
