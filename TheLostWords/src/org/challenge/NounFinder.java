@@ -29,4 +29,25 @@ public class NounFinder {
     private NounCoordinates reverseNounCoordinates(NounCoordinates nounCoordinates) {
         return new NounCoordinates(nounCoordinates.nounEnd(), nounCoordinates.nounBegin());
     }
+
+    public NounCoordinates doAHorizontalSearch(String noun) {
+        for(int row = 0; row < input.length; row++) {
+            for(int column = 0; column < input[0].length; column++) {
+                if(isNounContainedInThisRowFromThisColumn(noun, row, column))
+                    return new NounCoordinates(new Coordinate(row, column), new Coordinate(row, column + noun.length() - 1));
+            }
+        }
+        return new NounCoordinates(new Coordinate(-1, -1), new Coordinate(-1, -1));
+    }
+
+    private boolean isNounContainedInThisRowFromThisColumn(String noun, int row, int column) {
+        int nounIndex = 0;
+        for(int inputSubIndex = column; inputSubIndex < column + noun.length(); inputSubIndex++)
+            if(input[row][inputSubIndex] != noun.charAt(nounIndex++)) return false;
+        return true;
+    }
+
+    public NounCoordinates doAReverseHorizontalSearch(String noun) {
+        return reverseNounCoordinates(doAHorizontalSearch(new StringBuilder(noun).reverse().toString()));
+    }
 }

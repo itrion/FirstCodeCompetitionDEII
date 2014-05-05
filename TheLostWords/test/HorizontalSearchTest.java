@@ -24,7 +24,7 @@ public class HorizontalSearchTest {
         String noun = "aab";
         NounFinder nounFinder = new NounFinder(input);
         assertEquals(new Coordinate(1, 3), nounFinder.doAHorizontalSearch(noun).nounBegin());
-        assertEquals(new Coordinate(1, 5), nounFinder.doAHorizontalSearch(noun).nounBegin());
+        assertEquals(new Coordinate(1, 5), nounFinder.doAHorizontalSearch(noun).nounEnd());
     }
 
     @Test
@@ -34,8 +34,8 @@ public class HorizontalSearchTest {
                 {'x', 'x', 'x', 'x', 'x', 'x', 'x'}};
         String noun = "acb";
         NounFinder nounFinder = new NounFinder(input);
-        assertEquals(new Coordinate(0, 3), nounFinder.doAHorizontalSearch(noun).nounBegin());
-        assertEquals(new Coordinate(0, 1), nounFinder.doAHorizontalSearch(noun).nounBegin());
+        assertEquals(new Coordinate(0, 3), nounFinder.doAReverseHorizontalSearch(noun).nounBegin());
+        assertEquals(new Coordinate(0, 1), nounFinder.doAReverseHorizontalSearch(noun).nounEnd());
     }
 
     @Test
@@ -45,7 +45,7 @@ public class HorizontalSearchTest {
                 {'a', 'b', 'c', 'a', 'a', 'b', 'b'}};
         String noun = "baacba";
         NounFinder nounFinder = new NounFinder(input);
-        assertEquals(new Coordinate(1, 5), nounFinder.doAHorizontalSearch(noun).nounBegin());
-        assertEquals(new Coordinate(1, 0), nounFinder.doAHorizontalSearch(noun).nounBegin());
+        assertEquals(new Coordinate(1, 5), nounFinder.doAReverseHorizontalSearch(noun).nounBegin());
+        assertEquals(new Coordinate(1, 0), nounFinder.doAReverseHorizontalSearch(noun).nounEnd());
     }
 }
