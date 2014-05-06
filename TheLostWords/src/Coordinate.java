@@ -1,5 +1,3 @@
-package org.challenge;
-
 public class Coordinate {
     private int x;
     private int y;
@@ -11,7 +9,7 @@ public class Coordinate {
 
     @Override
     public int hashCode() {
-        return ("" + x + ", " + y).hashCode();
+        return toString().hashCode();
     }
 
     @Override
@@ -23,6 +21,6 @@ public class Coordinate {
 
     @Override
     public String toString() {
-        return "{x:" + x + ", y:" + y + '}';
+        return String.format("(%d,%d)", x, y);
     }
 }

@@ -1,9 +1,6 @@
-import org.challenge.Coordinate;
-import org.challenge.NounFinder;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-
 
 public class VerticalSearchTest {
     @Test
@@ -18,8 +15,9 @@ public class VerticalSearchTest {
                 {'b'}};
         String noun = "aa";
         NounFinder nounFinder = new NounFinder(input);
-        assertEquals(new Coordinate(4, 0), nounFinder.doAVerticalSearch(noun).nounBegin());
-        assertEquals(new Coordinate(5, 0), nounFinder.doAVerticalSearch(noun).nounEnd());
+        assertEquals(true, nounFinder.isInColumns(noun));
+        assertEquals(new Coordinate(4, 0), nounFinder.lastFoundPosition().nounBegin());
+        assertEquals(new Coordinate(5, 0), nounFinder.lastFoundPosition().nounEnd());
     }
 
     @Test
@@ -34,12 +32,13 @@ public class VerticalSearchTest {
                 {'x', 'b', 'x'}};
         String noun = "aa";
         NounFinder nounFinder = new NounFinder(input);
-        assertEquals(new Coordinate(4, 1), nounFinder.doAVerticalSearch(noun).nounBegin());
-        assertEquals(new Coordinate(5, 1), nounFinder.doAVerticalSearch(noun).nounEnd());
+        assertEquals(true, nounFinder.isInColumns(noun));
+        assertEquals(new Coordinate(4, 1), nounFinder.lastFoundPosition().nounBegin());
+        assertEquals(new Coordinate(5, 1), nounFinder.lastFoundPosition().nounEnd());
     }
 
     @Test
-    public void theNounIsReversedInTheSecondColumn(){
+    public void theNounIsReversedInTheSecondColumn() {
         char[][] input = {
                 {'x', 'a', 'x'},
                 {'x', 'b', 'x'},
@@ -50,12 +49,13 @@ public class VerticalSearchTest {
                 {'x', 'b', 'x'}};
         String noun = "adc";
         NounFinder nounFinder = new NounFinder(input);
-        assertEquals(new Coordinate(4, 1), nounFinder.doAReverseVerticalSearch(noun).nounBegin());
-        assertEquals(new Coordinate(2, 1), nounFinder.doAReverseVerticalSearch(noun).nounEnd());
+        assertEquals(true, nounFinder.isInColumns(noun));
+        assertEquals(new Coordinate(4, 1), nounFinder.lastFoundPosition().nounBegin());
+        assertEquals(new Coordinate(2, 1), nounFinder.lastFoundPosition().nounEnd());
     }
 
     @Test
-    public void theNounIsReversedInTheFirsColumn(){
+    public void theNounIsReversedInTheFirsColumn() {
         char[][] input = {
                 {'a', 'x'},
                 {'b', 'x'},
@@ -66,12 +66,13 @@ public class VerticalSearchTest {
                 {'b', 'x'}};
         String noun = "adc";
         NounFinder nounFinder = new NounFinder(input);
-        assertEquals(new Coordinate(4, 0), nounFinder.doAReverseVerticalSearch(noun).nounBegin());
-        assertEquals(new Coordinate(2, 0), nounFinder.doAReverseVerticalSearch(noun).nounEnd());
+        assertEquals(true, nounFinder.isInColumns(noun));
+        assertEquals(new Coordinate(4, 0), nounFinder.lastFoundPosition().nounBegin());
+        assertEquals(new Coordinate(2, 0), nounFinder.lastFoundPosition().nounEnd());
     }
 
     @Test
-    public void theNounIsNotCompleteInTheColumn(){
+    public void theNounIsNotCompleteInTheColumn() {
         char[][] input = {
                 {'a', 'x'},
                 {'b', 'x'},
@@ -82,8 +83,9 @@ public class VerticalSearchTest {
                 {'b', 'x'}};
         String noun = "daabc";
         NounFinder nounFinder = new NounFinder(input);
-        assertEquals(new Coordinate(-1, -1), nounFinder.doAVerticalSearch(noun).nounBegin());
-        assertEquals(new Coordinate(-1, -1), nounFinder.doAVerticalSearch(noun).nounEnd());
+        assertEquals(false, nounFinder.isInColumns(noun));
+        assertEquals(new Coordinate(-1, -1), nounFinder.lastFoundPosition().nounBegin());
+        assertEquals(new Coordinate(-1, -1), nounFinder.lastFoundPosition().nounEnd());
 
     }
 }
