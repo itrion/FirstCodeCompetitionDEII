@@ -8,8 +8,8 @@ public class NounFinder {
     }
 
     public NounCoordinates doAVerticalSearch(String noun) {
-        for(int column = 0; column < input.length; column++)
-            for(int row = 0; row < input.length; row++)
+        for(int column = 0; column < input[0].length; column++)
+            for(int row = 0; row < input.length - noun.length() + 1; row++)
                 if(isNounContainedInThisColumnFromThisRow(noun, column, row))
                     return new NounCoordinates(new Coordinate(row, column), new Coordinate(row + noun.length() - 1, column));
         return new NounCoordinates(new Coordinate(-1, -1), new Coordinate(-1, -1));
@@ -32,7 +32,7 @@ public class NounFinder {
 
     public NounCoordinates doAHorizontalSearch(String noun) {
         for(int row = 0; row < input.length; row++) {
-            for(int column = 0; column < input[0].length; column++) {
+            for(int column = 0; column < input[0].length - noun.length() + 1; column++) {
                 if(isNounContainedInThisRowFromThisColumn(noun, row, column))
                     return new NounCoordinates(new Coordinate(row, column), new Coordinate(row, column + noun.length() - 1));
             }

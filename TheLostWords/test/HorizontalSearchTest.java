@@ -48,4 +48,13 @@ public class HorizontalSearchTest {
         assertEquals(new Coordinate(1, 5), nounFinder.doAReverseHorizontalSearch(noun).nounBegin());
         assertEquals(new Coordinate(1, 0), nounFinder.doAReverseHorizontalSearch(noun).nounEnd());
     }
+
+    @Test
+    public void theNounIsNotCompleteInTheRow() {
+        char[][] input = {{'a', 'b', 'c', 'd'}};
+        String noun = "cde";
+        NounFinder nounFinder = new NounFinder(input);
+        assertEquals(new Coordinate(-1, -1), nounFinder.doAHorizontalSearch(noun).nounBegin());
+        assertEquals(new Coordinate(-1, -1), nounFinder.doAHorizontalSearch(noun).nounEnd());
+    }
 }

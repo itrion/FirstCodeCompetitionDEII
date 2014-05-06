@@ -69,4 +69,21 @@ public class VerticalSearchTest {
         assertEquals(new Coordinate(4, 0), nounFinder.doAReverseVerticalSearch(noun).nounBegin());
         assertEquals(new Coordinate(2, 0), nounFinder.doAReverseVerticalSearch(noun).nounEnd());
     }
+
+    @Test
+    public void theNounIsNotCompleteInTheColumn(){
+        char[][] input = {
+                {'a', 'x'},
+                {'b', 'x'},
+                {'c', 'x'},
+                {'d', 'x'},
+                {'a', 'x'},
+                {'a', 'x'},
+                {'b', 'x'}};
+        String noun = "daabc";
+        NounFinder nounFinder = new NounFinder(input);
+        assertEquals(new Coordinate(-1, -1), nounFinder.doAVerticalSearch(noun).nounBegin());
+        assertEquals(new Coordinate(-1, -1), nounFinder.doAVerticalSearch(noun).nounEnd());
+
+    }
 }
