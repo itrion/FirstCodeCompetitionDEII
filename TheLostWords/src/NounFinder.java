@@ -1,9 +1,6 @@
-import java.util.Map;
-
 public class NounFinder{
     private char[][] input;
     private NounCoordinates lastFoundCoordinate;
-    private Map<String, NounCoordinates> searchResultStore;
 
     public NounFinder(char[][] input) {
         this.input = input;
@@ -78,21 +75,5 @@ public class NounFinder{
 
     public NounCoordinates lastFoundPosition() {
         return (lastFoundCoordinate == null) ? new NounCoordinates(new Coordinate(-1, -1), new Coordinate(-1, -1)) : lastFoundCoordinate;
-    }
-
-    public NounFinder storeResultIn(Map<String, NounCoordinates> store) {
-        this.searchResultStore = store;
-        return this;
-    }
-
-    public void startSearch(final String noun, final ThreadCounter threadFinishedCounter) {
-       new Thread(new Runnable() {
-            @Override
-            public void run() {
-                NounCoordinates nounCoordinates = find(noun);
-                searchResultStore.put(noun, nounCoordinates);
-                threadFinishedCounter.notifyFinish();
-            }
-        }).start();
     }
 }

@@ -14,15 +14,8 @@ public class Main {
         while((line = bufferRead.readLine()) != null)
             input.add(line);
         Map<String, NounCoordinates> searchResults = new LinkedHashMap<String, NounCoordinates>();
-        String[] nounsToSearch = new InputTransformer(input).nounsToSearch();
-        for(String noun : nounsToSearch)
-            searchResults.put(noun, null);
-        ThreadCounter finishCounter = new ThreadCounter(nounsToSearch.length);
-        for(String nounToSearch : nounsToSearch)
-            new NounFinder(new InputTransformer(input).transformInputIntoMatrix()).storeResultIn(searchResults).startSearch(nounToSearch, finishCounter);
-        while(finishCounter.remainingCounters() < 0) {
-        }
+        for(String nounToSearch : new InputTransformer(input).nounsToSearch())
+            searchResults.put(nounToSearch, new NounFinder(new InputTransformer(input).transformInputIntoMatrix()).find(nounToSearch));
         System.out.print(new ResultView(searchResults).display());
-
     }
 }
