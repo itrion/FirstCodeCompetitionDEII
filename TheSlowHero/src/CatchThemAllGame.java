@@ -4,6 +4,6 @@ public class CatchThemAllGame {
     }
 
     public int autoPlay() {
-        return 0;
+        return -1;
     }
 }
