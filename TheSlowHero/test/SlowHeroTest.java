@@ -1,26 +1,25 @@
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class SlowHeroTest {
     @Test
     public void exampleTest() {
+        InputReader reader = getMockReaderForExample();
         Platforms platforms = new Platforms();
-        platforms.add(new Platform(-1, 2, 1));
-        platforms.add(new Platform(0, 3, 0));
-        platforms.add(new Platform(-2, 1, 0));
+        for(int i = 0; i < reader.readNumberOfPlatforms(); i++)
+            platforms.add(reader.readNextPlatform());
         CatchThemAllGame game = new CatchThemAllGame(platforms);
-        int timeOfCrossing = game.play();
-        assertEquals(-1, timeOfCrossing);
+        assertEquals(-1, game.play());
     }
 
-    @Test
-    public void firstTestFromChallenge(){
-        assertTrue(false);
-    }
-
-    @Test
-    public void secondTestFromChallenge(){
-        assertTrue(false);
+    private InputReader getMockReaderForExample() {
+        InputReader inputReader = mock(InputReader.class);
+        when(inputReader.readNumberOfPlatforms()).
+                thenReturn(3);
+        when(inputReader.readNumberOfPlatforms()).
+                thenReturn(new int[]{-1, 2, 1}, new int[]{0, 3, 0}, new int[]{-2, 1, 0});
+        return inputReader;
     }
 }
