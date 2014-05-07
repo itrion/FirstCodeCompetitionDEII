@@ -36,9 +36,9 @@ public class SlowHeroTest {
                 thenReturn(3);
         when(inputReader.readNextPlatform()).
                 thenReturn(
-                        new int[]{-1, 2, 1},
-                        new int[]{0, 3, 0},
-                        new int[]{-2, 1, 0});
+                        new int[]{-1, 2, 1, Platforms.DIRECTION_DOWN},
+                        new int[]{0, 3, 0, Platforms.DIRECTION_DOWN},
+                        new int[]{-2, 1, 0, Platforms.DIRECTION_DOWN});
         return inputReader;
     }
 
@@ -48,10 +48,10 @@ public class SlowHeroTest {
                 thenReturn(4);
         when(inputReader.readNextPlatform()).
                 thenReturn(
-                        new int[]{-1, 2, 1},
-                        new int[]{0, 3, 0},
-                        new int[]{4, 0, 0},
-                        new int[]{-2, 1, 0});
+                        new int[]{-1, 2, 1, Platforms.DIRECTION_DOWN},
+                        new int[]{0, 3, 0, Platforms.DIRECTION_DOWN},
+                        new int[]{4, 0, 0, Platforms.DIRECTION_DOWN},
+                        new int[]{-2, 1, 0, Platforms.DIRECTION_DOWN});
         return inputReader;
     }
 
@@ -61,8 +61,8 @@ public class SlowHeroTest {
                 thenReturn(2);
         when(inputReader.readNextPlatform()).
                 thenReturn(
-                        new int[]{-3, 0, 0},
-                        new int[]{0, 3, 0});
+                        new int[]{-3, 0, 0, Platforms.DIRECTION_DOWN},
+                        new int[]{0, 3, 0, Platforms.DIRECTION_DOWN});
         return inputReader;
 
     }
