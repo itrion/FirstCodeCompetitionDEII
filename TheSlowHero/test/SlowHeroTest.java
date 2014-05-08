@@ -7,63 +7,63 @@ import static org.mockito.Mockito.when;
 public class SlowHeroTest {
     @Test
     public void exampleTest() {
-        InputReader reader = getMockReaderForExample();
+        InputTransformer reader = getMockReaderForExample();
         executeTestWithReaderAndExpectedTime(reader, -1);
     }
 
     @Test
     public void firstTestFromChallenge() {
-        InputReader reader = getMockReaderForFirstTestFromChallenge();
+        InputTransformer reader = getMockReaderForFirstTestFromChallenge();
         executeTestWithReaderAndExpectedTime(reader, -1);
     }
 
     @Test
     public void secondTestFromChallenge() {
-        InputReader reader = getMockReaderForSecondTestFromChallenge();
+        InputTransformer reader = getMockReaderForSecondTestFromChallenge();
         executeTestWithReaderAndExpectedTime(reader, 18);
     }
 
-    private void executeTestWithReaderAndExpectedTime(InputReader reader, int expectedTime) {
+    private void executeTestWithReaderAndExpectedTime(InputTransformer reader, int expectedTime) {
         Platforms platforms = new Platforms();
-        for(int i = 0; i < reader.readNumberOfPlatforms(); i++)
-            platforms.add(reader.readNextPlatform());
+        for(int i = 0; i < reader.readNumberOfPlatforms(""); i++)
+            platforms.add(reader.readNextPlatform(""));
         assertEquals(expectedTime, new CatchThemAllGame(platforms).autoPlay());
     }
 
-    private InputReader getMockReaderForExample() {
-        InputReader inputReader = mock(InputReader.class);
-        when(inputReader.readNumberOfPlatforms()).
+    private InputTransformer getMockReaderForExample() {
+        InputTransformer mockInputReader = mock(InputTransformer.class);
+        when(mockInputReader.readNumberOfPlatforms("")).
                 thenReturn(3);
-        when(inputReader.readNextPlatform()).
+        when(mockInputReader.readNextPlatform("")).
                 thenReturn(
                         new int[]{-1, 2, 1, Platforms.DIRECTION_DOWN},
                         new int[]{0, 3, 0, Platforms.DIRECTION_DOWN},
                         new int[]{-2, 1, 0, Platforms.DIRECTION_DOWN});
-        return inputReader;
+        return mockInputReader;
     }
 
-    private InputReader getMockReaderForFirstTestFromChallenge() {
-        InputReader inputReader = mock(InputReader.class);
-        when(inputReader.readNumberOfPlatforms()).
+    private InputTransformer getMockReaderForFirstTestFromChallenge() {
+        InputTransformer mockInputReader = mock(InputTransformer.class);
+        when(mockInputReader.readNumberOfPlatforms("")).
                 thenReturn(4);
-        when(inputReader.readNextPlatform()).
+        when(mockInputReader.readNextPlatform("")).
                 thenReturn(
                         new int[]{-1, 2, 1, Platforms.DIRECTION_DOWN},
                         new int[]{0, 3, 0, Platforms.DIRECTION_DOWN},
                         new int[]{4, 0, 0, Platforms.DIRECTION_DOWN},
                         new int[]{-2, 1, 0, Platforms.DIRECTION_DOWN});
-        return inputReader;
+        return mockInputReader;
     }
 
-    private InputReader getMockReaderForSecondTestFromChallenge() {
-        InputReader inputReader = mock(InputReader.class);
-        when(inputReader.readNumberOfPlatforms()).
+    private InputTransformer getMockReaderForSecondTestFromChallenge() {
+        InputTransformer mockInputReader = mock(InputTransformer.class);
+        when(mockInputReader.readNumberOfPlatforms("")).
                 thenReturn(2);
-        when(inputReader.readNextPlatform()).
+        when(mockInputReader.readNextPlatform("")).
                 thenReturn(
                         new int[]{-3, 0, 0, Platforms.DIRECTION_DOWN},
                         new int[]{0, 3, 0, Platforms.DIRECTION_DOWN});
-        return inputReader;
+        return mockInputReader;
 
     }
 }
