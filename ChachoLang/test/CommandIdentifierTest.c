@@ -5,20 +5,28 @@
 
 
 void command_with_no_args(CuTest* cutest){
-	CuAssertIntEquals(cutest, BUENAS, identifyCommand("buenas;"));
-	CuAssertIntEquals(cutest, VENGA, identifyCommand("venga!;"));
-	CuAssertIntEquals(cutest, PALANTE, identifyCommand("palante;"));
-	CuAssertIntEquals(cutest, PATRAS, identifyCommand("patras;"));
-	CuAssertIntEquals(cutest, INTENTALO, identifyCommand("intentalo;"));
-	CuAssertIntEquals(cutest, CHACHO, identifyCommand("chacho!;"));
+	CuAssertIntEquals(cutest, BUENAS, identifyCommand(strdup("buenas;")));
+	CuAssertIntEquals(cutest, VENGAA, identifyCommand(strdup("venga!;")));
+	CuAssertIntEquals(cutest, PALANTE, identifyCommand(strdup("palante;")));
+	CuAssertIntEquals(cutest, PATRAS, identifyCommand(strdup("patras;")));
+	CuAssertIntEquals(cutest, INTENTALO, identifyCommand(strdup("intentalo;")));
+	CuAssertIntEquals(cutest, CHACHOO, identifyCommand(strdup("chacho!;")));
 }
 
 void command_with_args_in_brackets(CuTest* cutest){
-	CuAssertTrue(cutest, 1);
+	CuAssertTrue(cutest, 0);
 }
 
 void command_with_args_joined_at_the_end(CuTest* cutest){
-	CuAssertTrue(cutest, 1);
+	CuAssertIntEquals(cutest, AUMENTA, identifyCommand(strdup("aumenta1;")));
+	CuAssertIntEquals(cutest, AUMENTA, identifyCommand(strdup("aumenta10;")));
+	CuAssertIntEquals(cutest, AUMENTA, identifyCommand(strdup("aumenta100;")));
+	CuAssertIntEquals(cutest, QUITA, identifyCommand(strdup("quita2;")));
+	CuAssertIntEquals(cutest, QUITA, identifyCommand(strdup("quita22;")));
+	CuAssertIntEquals(cutest, QUITA, identifyCommand(strdup("quita222;")));
+	CuAssertIntEquals(cutest, VETEA, identifyCommand(strdup("vetea1;")));
+	CuAssertIntEquals(cutest, VETEA, identifyCommand(strdup("vetea11;")));
+	CuAssertIntEquals(cutest, VETEA, identifyCommand(strdup("vetea111;")));
 }
 
 CuSuite* loadCommandIdentifierSuit(){

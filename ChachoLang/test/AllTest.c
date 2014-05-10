@@ -11,6 +11,7 @@ void displayResults(char* results){
 char* runAllTests(CuSuite* allSuites){
 	CuString* output = CuStringNew();
 	CuSuiteRun(allSuites);
+	CuSuiteSummary(allSuites, output);
 	CuSuiteDetails(allSuites, output);
 	return output->buffer;
 }
