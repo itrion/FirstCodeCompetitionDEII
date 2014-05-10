@@ -17,6 +17,13 @@ void command_with_args_in_brackets(CuTest* cutest){
 	CuAssertTrue(cutest, 0);
 }
 
+void command_with_args_separated_by_a_space(CuTest* cutest){
+	CuAssertIntEquals(cutest, VOYAREPETIRME, identifyCommand(strdup("voyarepetirme 1 veces")));
+	CuAssertIntEquals(cutest, VOYAREPETIRME, identifyCommand(strdup("voyarepetirme 11 veces")));
+	CuAssertIntEquals(cutest, VOYAREPETIRME, identifyCommand(strdup("voyarepetirme 111 veces")));
+	CuAssertIntEquals(cutest, VOYAREPETIRME, identifyCommand(strdup("voyarepetirme 1111 veces")));
+}
+
 void command_with_args_joined_at_the_end(CuTest* cutest){
 	CuAssertIntEquals(cutest, AUMENTA, identifyCommand(strdup("aumenta1;")));
 	CuAssertIntEquals(cutest, AUMENTA, identifyCommand(strdup("aumenta10;")));
@@ -33,6 +40,7 @@ CuSuite* loadCommandIdentifierSuit(){
 	CuSuite* suite = CuSuiteNew();
 	SUITE_ADD_TEST(suite, command_with_no_args);
 	SUITE_ADD_TEST(suite, command_with_args_in_brackets);
+	SUITE_ADD_TEST(suite, command_with_args_separated_by_a_space);
 	SUITE_ADD_TEST(suite, command_with_args_joined_at_the_end);
 	return suite;
 }
