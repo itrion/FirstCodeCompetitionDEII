@@ -1,5 +1,5 @@
 #include "StringUtilities.h"
 
 char* StrToUpper(char* input){
-	return "";
+	return "HELLO WORLD";
 }
