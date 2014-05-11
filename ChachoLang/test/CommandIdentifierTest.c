@@ -14,14 +14,16 @@ void command_with_no_args(CuTest* cutest){
 }
 
 void command_with_args_in_brackets(CuTest* cutest){
-	CuAssertTrue(cutest, 0);
+	CuAssertIntEquals(cutest, IMPRIMO, identifyCommand("imprimo(10);"));
+	CuAssertIntEquals(cutest, IMPRIMO, identifyCommand("imprimo(10);"));
+	CuAssertIntEquals(cutest, APUNTA, identifyCommand("apunta();"));
 }
 
 void command_with_args_separated_by_a_space(CuTest* cutest){
-	CuAssertIntEquals(cutest, VOYAREPETIRME, identifyCommand(strdup("voyarepetirme 1 veces")));
-	CuAssertIntEquals(cutest, VOYAREPETIRME, identifyCommand(strdup("voyarepetirme 11 veces")));
-	CuAssertIntEquals(cutest, VOYAREPETIRME, identifyCommand(strdup("voyarepetirme 111 veces")));
-	CuAssertIntEquals(cutest, VOYAREPETIRME, identifyCommand(strdup("voyarepetirme 1111 veces")));
+	CuAssertIntEquals(cutest, VOYAREPETIRME, identifyCommand(strdup("voyarepetirme 1 veces;")));
+	CuAssertIntEquals(cutest, VOYAREPETIRME, identifyCommand(strdup("voyarepetirme 11 veces;")));
+	CuAssertIntEquals(cutest, VOYAREPETIRME, identifyCommand(strdup("voyarepetirme 111 veces;")));
+	CuAssertIntEquals(cutest, VOYAREPETIRME, identifyCommand(strdup("voyarepetirme 1111 veces;")));
 }
 
 void command_with_args_joined_at_the_end(CuTest* cutest){

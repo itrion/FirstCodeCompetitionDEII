@@ -3,6 +3,7 @@
 
 CuSuite* loadChachoLangInterpreterSuit();
 CuSuite* loadCommandIdentifierSuit();
+CuSuite* loadCommandsBehaviourSuite();
 
 void displayResults(char* results){
 	printf("%s\n", results);
@@ -20,6 +21,7 @@ CuSuite* loadAllSuites(){
 	CuSuite* allSuites = CuSuiteNew();
 	CuSuiteAddSuite(allSuites, loadChachoLangInterpreterSuit());
 	CuSuiteAddSuite(allSuites, loadCommandIdentifierSuit());
+	CuSuiteAddSuite(allSuites, loadCommandsBehaviourSuite());
 	return allSuites;
 }
 

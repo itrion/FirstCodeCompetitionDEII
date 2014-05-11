@@ -12,7 +12,8 @@ gcc -o AllTests \
 	test/AllTest.c \
 	test/ChachoLangInterpreterTest.c \
 	test/CommandIdentifierTest.c \
+	test/CommandsBehaviourTest.c \
 	ChachoLangInterpreter.c \
 	CommandIdentifier.c
 
-./AllTests
+time ./AllTests

@@ -17,7 +17,7 @@ void programm_should_start_with_buenas(CuTest* cutest){
 }
 
 void programm_should_end_with_venga(CuTest* cutest){
-	CuAssertTrue(cutest, 1);
+	CuAssertTrue(cutest, 0);
 }
 
 CuSuite* loadChachoLangInterpreterSuit(){
