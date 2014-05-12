@@ -1,5 +1,7 @@
 #include "ChachoLangInterpreter.h"
+#include <stdio.h>
 
-char* execute(char* program){
-	return "";
+int execute(char* program){
+	printf("%s\n", program);
+	return 0;
 }

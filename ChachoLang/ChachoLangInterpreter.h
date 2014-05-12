@@ -1,6 +1,6 @@
 #ifndef CHACHO_LANG_INTERPRETER
 #define CHACHO_LANG_INTERPRETER
 
-char* execute(char* program);
+int execute(char* program);
 
 #endif
