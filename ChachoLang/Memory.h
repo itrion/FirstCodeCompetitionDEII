@@ -2,7 +2,7 @@
 #define CHACHO_LANG_MEMORY_H
 
 typedef struct{
-	int initialPosition;
+	int currentPosition;
 	int size;
 } ChachoLangMemory;
 
