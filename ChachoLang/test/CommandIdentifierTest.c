@@ -60,8 +60,8 @@ void malformed_commands(CuTest* cutest){
 	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("depende;")));
 	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("depende 10")));
 	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("vetea")));
-	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("vetea10;")));
-	
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("vetea;")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("vetea10")));
 }
 
 CuSuite* loadCommandIdentifierSuit(){
