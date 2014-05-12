@@ -10,25 +10,30 @@ const int NINE_LETTERS_INDEX = 15;
 const int THIRTEEN_LETTERS_INDEX = 16;
 
 const char* commandsNames[] = {
-	"quita\0",
-	"vetea\0",
-	"apunta\0",
-	"buenas\0",
-	"patras\0",
-	"venga!\0",
-	"aumenta\0",
-	"chacho!\0",
-	"depende\0",
-	"edneped\0",
-	"imprimo\0",
-	"leeaqui\0",
-	"maburri\0",
-	"palante\0",
-	"imprimio\0",
-	"intentalo\0",
-	"voyarepetirme\0"};
+	"quita",
+	"vetea",
+	"apunta",
+	"buenas",
+	"patras",
+	"venga!",
+	"aumenta",
+	"chacho!",
+	"depende",
+	"edneped",
+	"imprimo",
+	"leeaqui",
+	"maburri",
+	"palante",
+	"imprimio",
+	"intentalo",
+	"voyarepetirme"};
+
+int commandFinishesWithSemicolon(char* command){
+	return command[strlen(command) - 1] == ';';
+}
 
 int identifyCommand(char* commandName){
+	if (!commandFinishesWithSemicolon(commandName)) return BAD_COMMAND;
 	for (int i = FIVE_LETTERS_INDEX; i < SIX_LETTERS_INDEX; ++i){
 		if(strncmp(commandName, commandsNames[i], 5) == 0) return i;
 	}

@@ -3,6 +3,7 @@
 
 #include "Memory.h"
 
+#define	BAD_COMMAND -1
 #define	QUITA 0
 #define	VETEA 1
 #define	APUNTA 2
