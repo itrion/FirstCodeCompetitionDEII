@@ -3,23 +3,31 @@
 
 #include "Memory.h"
 
-const int	QUITA  = 0;
-const int	VETEA = 1;
-const int	APUNTA = 2;
-const int	BUENAS = 3;
-const int	PATRAS = 4;
-const int	VENGAA = 5;
-const int	AUMENTA = 6;
-const int	CHACHOO = 7;
-const int	DEPENDE = 8;
-const int	EDNEPED = 9;
-const int	IMPRIMO = 10;
-const int	LEEAQUI = 11;
-const int	MABURRI = 12;
-const int	PALANTE = 13;
-const int	IMPRIMIO = 14;
-const int	INTENTALO = 15;
-const int	VOYAREPETIRME = 16;
+#define	QUITA 0
+#define	VETEA 1
+#define	APUNTA 2
+#define	BUENAS 3
+#define	PATRAS 4
+#define	VENGAA 5
+#define	AUMENTA 6
+#define	CHACHOO 7
+#define	DEPENDE 8
+#define	EDNEPED 9
+#define	IMPRIMO 10
+#define	LEEAQUI 11
+#define	MABURRI 12
+#define	PALANTE 13
+#define	IMPRIMIO 14
+#define	INTENTALO 15
+#define	VOYAREPETIRME 16
 
-int buenas(ChachoLangMemory* memory);
+
+void quita(ChachoLangMemory* memory, int posicionesParaQuitar);
+void vetea(ChachoLangMemory* memory, int posicion);
+void buenas(ChachoLangMemory* memory);
+void patras(ChachoLangMemory* memory);
+void aumenta(ChachoLangMemory* memory, int posicionesParaAumentar);
+void venga(ChachoLangMemory* memory);
+void palante(ChachoLangMemory* memory);
+
 #endif
