@@ -22,6 +22,7 @@ CuSuite* loadAllSuites(){
 	CuSuiteAddSuite(allSuites, loadChachoLangInterpreterSuit());
 	CuSuiteAddSuite(allSuites, loadCommandIdentifierSuit());
 	CuSuiteAddSuite(allSuites, loadCommandsBehaviourSuite());
+	CuSuiteAddSuite(allSuites, loadProgramSplitterSuit());
 	return allSuites;
 }
 

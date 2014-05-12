@@ -12,9 +12,11 @@ gcc -o AllTests \
 	CommandIdentifier.c \
 	ChachoLangInterpreter.c \
 	Commands.c \
+	ProgramSplitter.c \
 	test/AllTest.c \
 	test/ChachoLangInterpreterTest.c \
 	test/CommandIdentifierTest.c \
 	test/CommandsBehaviourTest.c
+	test/ProgramSplitterTest.c
 
 time ./AllTests
