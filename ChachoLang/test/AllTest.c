@@ -4,6 +4,7 @@
 CuSuite* loadChachoLangInterpreterSuit();
 CuSuite* loadCommandIdentifierSuit();
 CuSuite* loadCommandsBehaviourSuite();
+CuSuite* loadProgramSplitterSuit();
 
 void displayResults(char* results){
 	printf("%s\n", results);
