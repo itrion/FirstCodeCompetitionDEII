@@ -4,30 +4,33 @@
 
 void all_statements_ends_in_semicolon(CuTest* cutest){
 	CuAssertIntEquals(cutest, -1, execute(strdup("buenas\nleeaqui fich\nvenga!")));
+	CuAssertIntEquals(cutest, -1, execute(strdup("buenas\npalante;\nvenga!;")));
+	CuAssertIntEquals(cutest, -1, execute(strdup("buenas;\npalante\nvenga!")));
+	CuAssertIntEquals(cutest, -1, execute(strdup("buenas;\npalante;\nvenga!")));
 }
 
 void programm_should_start_with_buenas(CuTest* cutest){
-	CuAssertIntEquals(cutest, -1, execute("imprimio();\nvenga!;"));
+	CuAssertIntEquals(cutest, -1, execute(strdup("imprimio();\nvenga!;")));
 }
 
 void programm_should_end_with_venga(CuTest* cutest){
-	CuAssertIntEquals(cutest, -1, execute("buenas;\naumenta20;\nvenga;"));
+	CuAssertIntEquals(cutest, -1, execute(strdup("buenas;\naumenta20;\nvenga;")));
 }
 
 void very_big_number(CuTest* cutest){
-	CuAssertIntEquals(cutest, -1, execute("buenas;\naumenta20;\naumenta20;\naumenta20;\naumenta20;\naumenta20;\naumenta180;\nvenga!;"));
+	CuAssertIntEquals(cutest, -1, execute(strdup("buenas;\naumenta20;\naumenta20;\naumenta20;\naumenta20;\naumenta20;\naumenta180;\nvenga!;")));
 }
 
 void malformed_exception(CuTest* cutest){
-	CuAssertIntEquals(cutest, -1, execute("buenas;\nintentalo;\naumenta5;\nvenga!;"));
+	CuAssertIntEquals(cutest, -1, execute(strdup("buenas;\nintentalo;\naumenta5;\nvenga!;")));
 }
 
 void malformed_conditional_statement(CuTest* cutest){
-	CuAssertIntEquals(cutest, -1, execute("buenas;\naumenta5;\nedneped;\nvenga!;"));
+	CuAssertIntEquals(cutest, -1, execute(strdup("buenas;\naumenta5;\nedneped;\nvenga!;")));
 }
 
 void malformed_loop_statement(CuTest* cutest){
-	CuAssertIntEquals(cutest, -1, execute("buenas;\nvoyarepetirme veces;\naumenta5;\nmaburri;\nvenga!;"));
+	CuAssertIntEquals(cutest, -1, execute(strdup("buenas;\nvoyarepetirme veces;\naumenta5;\nmaburri;\nvenga!;")));
 }
 
 void hello_world(CuTest* cutest){

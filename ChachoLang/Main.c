@@ -8,7 +8,6 @@ const char END_CHARACTER = '"';
 
 char* initializeBufferForConent(){
 	char* bufferForContent = malloc(sizeof(char) * BUFFER_SIZE);
-	for (int i = 0; i < BUFFER_SIZE; i++){bufferForContent[i] = '\0';}
 	return bufferForContent;
 }
 
