@@ -38,11 +38,38 @@ void command_with_args_joined_at_the_end(CuTest* cutest){
 	CuAssertIntEquals(cutest, VETEA, identifyCommand(strdup("vetea111;")));
 }
 
+void malformed_commands(CuTest* cutest){
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("venga;")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("venga!")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("voyarepetirme;")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("voyarepetirme 12;")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("voyarepetirme 12 veces")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("voyarepetirme veces;")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("leeaqui;")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("leeaqui file")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("imprimio;")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("imprimio(;")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("imprimio()")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("imprimio(12)")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("imprimo(12)")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("aumenta;")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("aumenta10")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("aumenta100")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("chacho;")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("chacho!")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("depende;")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("depende 10")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("vetea")));
+	CuAssertIntEquals(cutest, BAD_COMMAND, identifyCommand(strdup("vetea10;")));
+	
+}
+
 CuSuite* loadCommandIdentifierSuit(){
 	CuSuite* suite = CuSuiteNew();
 	SUITE_ADD_TEST(suite, command_with_no_args);
 	SUITE_ADD_TEST(suite, command_with_args_in_brackets);
 	SUITE_ADD_TEST(suite, command_with_args_separated_by_a_space);
 	SUITE_ADD_TEST(suite, command_with_args_joined_at_the_end);
+	SUITE_ADD_TEST(suite, malformed_commands);
 	return suite;
 }
