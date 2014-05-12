@@ -13,7 +13,7 @@ char* trim(char* token) {
     return token;
 }
 
-char** splitIntoCommands(char* program){
+char** splitProgramInCommands(char* program){
 	if(strlen(program) == 0) return 0;
 	char** result = malloc(sizeof(char*) * (countLines(program)));
 	char* token = strtok(program, "\n");

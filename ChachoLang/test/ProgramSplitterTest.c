@@ -6,7 +6,7 @@
 
 void empty_program(CuTest* cutest){
 	char* program = strdup("\0");
-	char** commands = splitIntoCommands(program);
+	char** commands = splitProgramInCommands(program);
 	CuAssertIntEquals(cutest, 0, countLines(program));
 	CuAssertPtrEquals(cutest, NULL, commands);
 	free(program);
@@ -15,7 +15,7 @@ void empty_program(CuTest* cutest){
 void program_with_one_line(CuTest* cutest){
 	char* program = strdup("buenas;");
 	CuAssertIntEquals(cutest, 0, countLines(program));
-	char** commands = splitIntoCommands(program);
+	char** commands = splitProgramInCommands(program);
 	CuAssertStrEquals(cutest, "buenas;", *(commands));
 	free(program);
 	free(commands);
@@ -24,7 +24,7 @@ void program_with_one_line(CuTest* cutest){
 void program_with_several_lines(CuTest* cutest){
 	char* program = strdup("buenas;\naumenta20;\naumenta20;\naumenta20;\naumenta20;\naumenta20;\naumenta180;\nvenga!;");
 	CuAssertIntEquals(cutest, 7, countLines(program));
-	char** commands = splitIntoCommands(program);
+	char** commands = splitProgramInCommands(program);
 	CuAssertStrEquals(cutest, "buenas;", *(commands));
 	CuAssertStrEquals(cutest, "aumenta20;", *(commands + 1));
 	CuAssertStrEquals(cutest, "aumenta20;", *(commands + 2));
@@ -39,7 +39,7 @@ void program_with_several_lines(CuTest* cutest){
 void program_with_spaces_between_commands(CuTest* cutest){
 	char* program = strdup("	buenas;\n  aumenta20;     \n 		aumenta20;\n  aumenta20;	\n 		aumenta20; \naumenta20; \n aumenta180;	\nvenga!; 	");
 	CuAssertIntEquals(cutest, 7, countLines(program));
-	char** commands = splitIntoCommands(program);
+	char** commands = splitProgramInCommands(program);
 	CuAssertStrEquals(cutest, "buenas;", *(commands));
 	CuAssertStrEquals(cutest, "aumenta20;", *(commands + 1));
 	CuAssertStrEquals(cutest, "aumenta20;", *(commands + 2));
