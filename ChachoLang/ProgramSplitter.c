@@ -26,7 +26,8 @@ char** splitProgramInCommands(char* program){
 }
 
 int countLines(char* text){
-	int counter = 0;
+	if (text[0] == 0) return 0;
+	int counter = 1;
 	while(*text){
 		if(*text == '\n'){counter++;}
 		text++;

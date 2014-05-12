@@ -14,7 +14,7 @@ void empty_program(CuTest* cutest){
 
 void program_with_one_line(CuTest* cutest){
 	char* program = strdup("buenas;");
-	CuAssertIntEquals(cutest, 0, countLines(program));
+	CuAssertIntEquals(cutest, 1, countLines(program));
 	char** commands = splitProgramInCommands(program);
 	CuAssertStrEquals(cutest, "buenas;", *(commands));
 	free(program);
@@ -23,7 +23,7 @@ void program_with_one_line(CuTest* cutest){
 
 void program_with_several_lines(CuTest* cutest){
 	char* program = strdup("buenas;\naumenta20;\naumenta20;\naumenta20;\naumenta20;\naumenta20;\naumenta180;\nvenga!;");
-	CuAssertIntEquals(cutest, 7, countLines(program));
+	CuAssertIntEquals(cutest, 8, countLines(program));
 	char** commands = splitProgramInCommands(program);
 	CuAssertStrEquals(cutest, "buenas;", *(commands));
 	CuAssertStrEquals(cutest, "aumenta20;", *(commands + 1));
@@ -38,7 +38,7 @@ void program_with_several_lines(CuTest* cutest){
 }
 void program_with_spaces_between_commands(CuTest* cutest){
 	char* program = strdup("	buenas;\n  aumenta20;     \n 		aumenta20;\n  aumenta20;	\n 		aumenta20; \naumenta20; \n aumenta180;	\nvenga!; 	");
-	CuAssertIntEquals(cutest, 7, countLines(program));
+	CuAssertIntEquals(cutest, 8, countLines(program));
 	char** commands = splitProgramInCommands(program);
 	CuAssertStrEquals(cutest, "buenas;", *(commands));
 	CuAssertStrEquals(cutest, "aumenta20;", *(commands + 1));
@@ -54,7 +54,7 @@ void program_with_spaces_between_commands(CuTest* cutest){
 
 void long_program(CuTest* cutest){
 	char* program = strdup("buenas;\naumenta72;\npalante;\naumenta111;\npalante;\naumenta108;\npalante;\naumenta97;\npalante;\naumenta32;\npalante;\naumenta77;\npalante;\naumenta117;\npalante;\naumenta110;\npalante;\naumenta100;\npalante;\naumenta111;\npalante;\nvetea0;\nvoyarepetirme 10 veces;\nimprimio();\npalante;\nmaburri;\nvenga!;");
-	CuAssertIntEquals(cutest, 26, countLines(program));
+	CuAssertIntEquals(cutest, 27, countLines(program));
 }
 
 CuSuite* loadProgramSplitterSuit(){

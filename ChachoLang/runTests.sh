@@ -7,7 +7,7 @@ then
 	rm AllTests
 fi;
 
-gcc -o AllTests \
+gcc -Wall -Werror -o AllTests \
 	CUtest/CuTest.c \
 	CommandIdentifier.c \
 	ChachoLangInterpreter.c \
@@ -16,7 +16,7 @@ gcc -o AllTests \
 	test/AllTest.c \
 	test/ChachoLangInterpreterTest.c \
 	test/CommandIdentifierTest.c \
-	test/CommandsBehaviourTest.c
+	test/CommandsBehaviourTest.c \
 	test/ProgramSplitterTest.c
 
 time ./AllTests

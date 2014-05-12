@@ -3,7 +3,7 @@
 #include "string.h"
 
 void all_statements_ends_in_semicolon(CuTest* cutest){
-	CuAssertIntEquals(cutest, -1, execute(strdp("buenas\nleeaqui fich\nvenga!")));
+	CuAssertIntEquals(cutest, -1, execute(strdup("buenas\nleeaqui fich\nvenga!")));
 }
 
 void programm_should_start_with_buenas(CuTest* cutest){
