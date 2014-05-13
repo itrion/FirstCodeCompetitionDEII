@@ -1,8 +1,8 @@
 #include "ProgramSplitter.h"
 #include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include <ctype.h>
+#include <stdio.h>
 
 char* trim(char* token) {
     char* pointer = token;

@@ -1,6 +1,5 @@
 #include "CommandIdentifier.h"
 #include <string.h>
-#include <stdio.h>
 
 const int FIVE_LETTERS_INDEX = 0;
 const int SIX_LETTERS_INDEX = 2;

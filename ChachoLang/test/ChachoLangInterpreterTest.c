@@ -62,5 +62,6 @@ CuSuite* loadChachoLangInterpreterSuit(){
 	SUITE_ADD_TEST(suite, hello_world);
 	SUITE_ADD_TEST(suite, bum_bum);
 	SUITE_ADD_TEST(suite, bad_order);
+	SUITE_ADD_TEST(suite, test_conditional);
 	return suite;
 }

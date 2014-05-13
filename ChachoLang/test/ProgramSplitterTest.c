@@ -2,7 +2,6 @@
 #include "../ProgramSplitter.h"
 #include <string.h>
 #include <stdlib.h>
-#include <stdio.h>
 
 void empty_program(CuTest* cutest){
 	char* program = strdup("\0");

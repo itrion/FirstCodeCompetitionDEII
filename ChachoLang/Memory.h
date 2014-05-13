@@ -4,6 +4,7 @@
 typedef struct{
 	int currentPosition;
 	int size;
+	int* memory;
 } ChachoLangMemory;
 
 #endif

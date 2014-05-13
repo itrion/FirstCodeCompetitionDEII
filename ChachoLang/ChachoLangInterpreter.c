@@ -1,7 +1,6 @@
 #include "ChachoLangInterpreter.h"
 #include "CommandIdentifier.h"
 #include "ProgramSplitter.h"
-#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -24,5 +23,10 @@ int execute(char* program){
 	char** commands = splitProgramInCommands(program);
 	int* commandsCodes = identifyCommandsCodes(commands, numberOfCommands);
 	if(isSomeCommandMalformed(commandsCodes, numberOfCommands)) return BAD_COMMAND;
+	ChachoLangMemory memory;
+	for (int i = 0; i < numberOfCommands; ++i){
+		if(commandsFunctions[i](&memory, *(commands + i))) continue;
+		return BAD_COMMAND;
+	}
 	return 0;
 }

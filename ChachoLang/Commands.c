@@ -5,6 +5,10 @@
 
 const int MAX_MEMORY_SIZE = 30000;
 
+int (*commandsFunctions[17])(ChachoLangMemory* memory, char* commandString) = {
+	quita, vetea, apunta, buenas, patras, venga, aumenta, chacho, depende,
+	edneped, imprimo, leeaqui, maburri, palante, imprimio, intentalo, voyarepetirme};
+
 int quita(ChachoLangMemory* memory, char* commandString){
 	int decremento = convertToInteger(slice(commandString, 5, strlen(commandString) - 2));
 	memory->memory[memory->currentPosition] -= decremento;
@@ -37,7 +41,7 @@ int venga(ChachoLangMemory* memory, char* commandString){
 }
 
 int aumenta(ChachoLangMemory* memory, char* commandString){
-	int incremento = 0;
+	int incremento = convertToInteger(slice(commandString, 7, strlen(commandString) - 1));
 	if(memory->memory[memory->currentPosition] + incremento > 255) return -1;
 	memory->memory[memory->currentPosition] += incremento;
 	return 0;
