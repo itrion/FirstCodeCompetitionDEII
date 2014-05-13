@@ -22,13 +22,24 @@
 #define	INTENTALO 15
 #define	VOYAREPETIRME 16
 
+int (*commandsFunctions[17])(ChachoLangMemory* memory, char* commandString);
 
-void quita(ChachoLangMemory* memory, int posicionesParaQuitar);
-void vetea(ChachoLangMemory* memory, int posicion);
-void buenas(ChachoLangMemory* memory);
-void patras(ChachoLangMemory* memory);
-void aumenta(ChachoLangMemory* memory, int posicionesParaAumentar);
-void venga(ChachoLangMemory* memory);
-void palante(ChachoLangMemory* memory);
+int quita(ChachoLangMemory* memory, char* commandString);
+int vetea(ChachoLangMemory* memory, char* commandString);
+int apunta(ChachoLangMemory* memory, char* commandString);
+int buenas(ChachoLangMemory* memory, char* commandString);
+int patras(ChachoLangMemory* memory, char* commandString);
+int venga(ChachoLangMemory* memory, char* commandString);
+int aumenta(ChachoLangMemory* memory, char* commandString);
+int chacho(ChachoLangMemory* memory, char* commandString);
+int depende(ChachoLangMemory* memory, char* commandString);
+int edneped(ChachoLangMemory* memory, char* commandString);
+int imprimo(ChachoLangMemory* memory, char* commandString);
+int leeaqui(ChachoLangMemory* memory, char* commandString);
+int maburri(ChachoLangMemory* memory, char* commandString);
+int palante(ChachoLangMemory* memory, char* commandString);
+int imprimio(ChachoLangMemory* memory, char* commandString);
+int intentalo(ChachoLangMemory* memory, char* commandString);
+int voyarepetirme(ChachoLangMemory* memory, char* commandString);
 
 #endif

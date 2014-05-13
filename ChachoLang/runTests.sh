@@ -1,6 +1,6 @@
 #!/bin/bash
 
-clear
+clear; clear
 
 if [ -f "AllTests" ];
 then
@@ -17,6 +17,7 @@ gcc -Wall -Werror -o AllTests \
 	test/ChachoLangInterpreterTest.c \
 	test/CommandIdentifierTest.c \
 	test/CommandsBehaviourTest.c \
+	test/StringOperationTest.c \
 	test/ProgramSplitterTest.c
 
 time ./AllTests
