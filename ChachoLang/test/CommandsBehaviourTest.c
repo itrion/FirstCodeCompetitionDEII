@@ -56,6 +56,8 @@ void vetea_moves_pointer_to_desired_position(CuTest* cutest){
 	venga(&memory, strdup("venga!;"));
 }
 
+
+
 CuSuite* loadCommandsBehaviourSuite(){
 	CuSuite* suite = CuSuiteNew();
 	SUITE_ADD_TEST(suite, buenas_initializes_the_memory);

@@ -49,3 +49,9 @@ int convertToInteger(char* input){
 	sscanf(input, "%d", &value);
 	return value;
 }
+
+int nextSpace(char* input, int startIndex){
+	for(int i=startIndex; i<strlen(input); i++){
+		if(input[i] == ' ') return i;
+	}return -1;
+}
