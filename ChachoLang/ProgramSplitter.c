@@ -34,3 +34,18 @@ int countLines(char* text){
 	}
 	return counter;
 }
+
+char* slice(char* input, int sliceStart, int sliceFinish){
+	char* subString = malloc(sizeof(char) * (sliceFinish - sliceStart));
+	int subStringIndex = 0;
+	for (int i = sliceStart; i <sliceFinish; i++){
+		subString[subStringIndex++] = input[i];
+	}
+	return subString;
+}
+
+int convertToInteger(char* input){
+	int value;
+	sscanf(input, "%d", &value);
+	return value;
+}
