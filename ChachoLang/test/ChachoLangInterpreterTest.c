@@ -1,6 +1,7 @@
 #include "../CuTest/CuTest.h"
 #include "../ChachoLangInterpreter.h"
 #include "string.h"
+#include <stdio.h>
 
 void all_statements_ends_in_semicolon(CuTest* cutest){
 	CuAssertIntEquals(cutest, -1, execute(strdup("buenas\nleeaqui fich\nvenga!")));
@@ -60,7 +61,7 @@ CuSuite* loadChachoLangInterpreterSuit(){
 	SUITE_ADD_TEST(suite, malformed_conditional_statement);
 	SUITE_ADD_TEST(suite, malformed_loop_statement);
 	SUITE_ADD_TEST(suite, hello_world);
-	//SUITE_ADD_TEST(suite, bum_bum);
+	SUITE_ADD_TEST(suite, bum_bum);
 	SUITE_ADD_TEST(suite, bad_order);
 	SUITE_ADD_TEST(suite, test_conditional);
 	return suite;

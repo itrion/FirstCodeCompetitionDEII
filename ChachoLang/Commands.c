@@ -43,26 +43,27 @@ int patras(ChachoLangMemory* memory, char* commandString){
 }
 
 int venga(ChachoLangMemory* memory, char* commandString){
-	return BAD_COMMAND;
+	return 0;
 }
 
 int aumenta(ChachoLangMemory* memory, char* commandString){
 	int incremento = convertToInteger(slice(commandString, 7, strlen(commandString) - 1));
-	if(memory->memory[memory->currentPosition] + incremento > 255) return BAD_COMMAND;
+	if(memory->memory[memory->currentPosition] + incremento >= 255) return BAD_COMMAND;
 	memory->memory[memory->currentPosition] += incremento;
 	return 0;
 }
 
 int chacho(ChachoLangMemory* memory, char* commandString){
-	return BAD_COMMAND;
+	return 0;
 }
 
 int depende(ChachoLangMemory* memory, char* commandString){
-	return BAD_COMMAND;
+	int currenValue = convertToInteger(slice(commandString, 8, strlen(commandString)-1));
+	return memory->memory[memory->currentPosition] == currenValue;
 }
 
 int edneped(ChachoLangMemory* memory, char* commandString){
-	return BAD_COMMAND;
+	return 0;
 }
 
 int imprimo(ChachoLangMemory* memory, char* commandString){
@@ -83,7 +84,7 @@ int palante(ChachoLangMemory* memory, char* commandString){
 }
 
 int imprimio(ChachoLangMemory* memory, char* commandString){
-	printf("%c\n", memory->memory[memory->currentPosition]);
+	printf("%c", memory->memory[memory->currentPosition]);
 	return 0;
 }
 

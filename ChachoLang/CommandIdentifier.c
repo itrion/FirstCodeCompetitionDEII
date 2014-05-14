@@ -122,7 +122,7 @@ int checkPalante(char* command){
 	return PALANTE;
 }
 int checkImprimio(char* command){
-	if(strlen(command) <= 9) return BAD_COMMAND;
+	if(strlen(command) < 11) return BAD_COMMAND;
 	return IMPRIMIO;
 }
 int checkIntentalo(char* command){

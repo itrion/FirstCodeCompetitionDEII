@@ -13,12 +13,39 @@ int* identifyCommandsCodes(char** commands, int numberOfCommands){
 	return commandsCodes;
 }
 
+int isNotClosingLastOpenedStatement(char* stack, char statementSymbol, int stackIndex){
+	if(statementSymbol == ')') return (']' == stack[stackIndex-1]);
+	if(statementSymbol == ']') return (')' == stack[stackIndex-1]);
+	return 1;
+}
+
+int flowControlStatementsAreWelformed(int* commandsCodes, int numberOfCommands){
+	char controlStatementsStack[10];
+	controlStatementsStack[0] = '*';
+	int stackIndex = 1;
+	for(int i=0; i<numberOfCommands; i++){
+		if(commandsCodes[i] == DEPENDE){controlStatementsStack[stackIndex++] = '(';}
+		else if(commandsCodes[i] == VOYAREPETIRME){controlStatementsStack[stackIndex++] = '[';}
+		else if(commandsCodes[i] == EDNEPED){
+			if(isNotClosingLastOpenedStatement(controlStatementsStack, ')', stackIndex)) {return BAD_COMMAND;}
+			controlStatementsStack[stackIndex--] = 0;
+		}
+		else if(commandsCodes[i] == MABURRI){
+			if(isNotClosingLastOpenedStatement(controlStatementsStack, ']', stackIndex)){ return BAD_COMMAND;}
+			controlStatementsStack[stackIndex--] = 0;
+		}
+	}
+	return stackIndex == 1;
+}
+
 int isSomeCommandMalformed(int* commandsCodes, int numberOfCommands){
 	for(int i = 0; i < numberOfCommands; i++){
 		if(commandsCodes[i] == BAD_COMMAND) {
 			return 1;
 		}
-	}return 0;
+	}
+	if(!flowControlStatementsAreWelformed(commandsCodes, numberOfCommands)) return BAD_COMMAND;
+	return 0;
 }
 
 int startWithBuenas(int* commandsCodes){
@@ -44,7 +71,7 @@ int repeat(ChachoLangMemory* memory, int* commandsCodes, char** commands, int* c
 	int loopStopIndex = findNextStopLoopCommand(commandsCodes, *commandIndex, numberOfCommands);
 	if(loopStopIndex < 0) return BAD_COMMAND;
 	for(int j=0; j<iterations; j++){
-		for(int i=*commandIndex + 1; i < loopStopIndex - 1; i++){
+		for(int i=*commandIndex + 1; i < loopStopIndex; i++){
 			if(commandsFunctions[commandsCodes[i]](memory, *(commands + i)) == BAD_COMMAND) {
 				return BAD_COMMAND;
 			}
